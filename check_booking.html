@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Booking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wdth,wght@113.4,100..700&display=swap" rel="stylesheet">
+<style>
+    body {
+        margin: 0;
+        background-color: #EEEBDD;
+    }
+    header,footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: #561C24;
+        color: #fbf6f7;
+        margin: 0;
+        padding: 0;
+        position: sticky;
+    }
+    h1,footer p {
+        margin: 0;
+        padding: 15px;
+    }
+    h1 {
+        font-family: "Kalnia", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 113.4;
+    }
+    nav {
+        display: flex;
+        margin-left: auto;
+    }
+    .button_header a {
+        margin: 0;
+        padding: 15px;
+        font-size: 15px;
+        color: inherit;
+        text-decoration: none;
+        font-family: "Kalnia", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 113.4;
+    }
+    .button_header a:hover{
+        color: #fff7ec;
+        font-size: larger;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+        .social_icons {
+            display: flex;
+            margin: 0;
+            padding: 15px;
+            margin-left: auto;
+            gap:10px
+        }
+        .social_icons a img {
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+        }
+        .container-background {
+            background-image: url('picture/bg_container.png');
+            background-size: 100% 100%;
+            height: 350px; /* Fixed height for background image */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            flex:1
+        }
+        .confirmation-form{
+            width: 500px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #7D0A0A;
+            margin-bottom: 20px;
+        }
+        .confirmation-form h2{
+            text-align: center;
+            color: #7D0A0A;
+            margin-bottom: 20px;
+        }
+        .confirmation-form form{
+            display: flex;
+            flex-direction: column;
+            width:100;
+        }
+        .confirmation-form input{
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .button_confirm{
+            background-color: #4b1111;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .button_confirm:hover{
+            background-color: #6b2929;
+        }
+        .booking-details {
+            width: 500px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #000000;
+            display: none; /* Initially hide */
+        }
+        .booking-details h2 {
+            text-align: center;
+            color: #7D0A0A;
+            margin-bottom: 20px;
+        }
+        .booking-details p {
+            margin-bottom: 10px;
+        }
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #561C24;
+            color: #fbf6f7;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkBookingForm = document.getElementById('check-booking-form');
+        checkBookingForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            checkBooking();
+        });
+
+    function checkBooking() {
+        const fullName = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const phoneNumber = document.getElementById('phone-number').value;
+        
+        // Here  would typically make a request to  backend or retrieve from localStorage
+        const savedDetails = JSON.parse(localStorage.getItem('receiptDetails'));
+        
+        if (savedDetails && 
+            savedDetails.fullName === fullName && 
+            savedDetails.email === email && 
+            savedDetails.phoneNumber === phoneNumber) {
+            displayBookingDetails(savedDetails);
+        } else {
+            alert('Booking details not found.');
+        }
+    }
+
+    function displayBookingDetails(details) {
+        const bookingDetailsDiv = document.getElementById('booking-details');
+        bookingDetailsDiv.innerHTML = ''; // Clear previous content
+
+        const bookingDetailsContent = `
+            <h2>Booking Details</h2>
+            <p><strong>Full Name:</strong> ${details.fullName}</p>
+            <p><strong>Email:</strong> ${details.email}</p>
+            <p><strong>Phone Number:</strong> ${details.phoneNumber}</p>
+            <p><strong>Departure Date:</strong> ${details.departureDate}</p>
+            <p><strong>From Destination:</strong> ${details.fromDestination}</p>
+            <p><strong>To Destination:</strong> ${details.toDestination}</p>
+            <p><strong>Bus Company:</strong> ${details.busCompany}</p>
+            <p><strong>Departure Time:</strong> ${details.departTime}</p>
+            <p><strong>Seats:</strong> ${details.seats.join(', ')}</p>
+            <p><strong>Total Price:</strong> MYR ${details.totalPrice}</p>
+        `;
+
+        const removeBookingBtn = document.createElement('button');
+        removeBookingBtn.textContent = 'Remove Booking';
+        removeBookingBtn.classList.add('button_confirm');
+        removeBookingBtn.addEventListener('click', function() {
+            const reason = prompt('Please enter a reason for removing the booking:');
+            if (reason) {
+                localStorage.removeItem('receiptDetails');
+                bookingDetailsDiv.removeAttribute('style'); // Remove inline style to hide
+            }
+        });
+
+        bookingDetailsDiv.innerHTML = bookingDetailsContent;
+        bookingDetailsDiv.appendChild(removeBookingBtn);
+        bookingDetailsDiv.setAttribute('style', 'display: block'); // Show the booking details
+    }
+});
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>LA BRISA BUS</h1>
+        <nav class="button_header">
+            <a href="HOMEPAGE.html">HOME &#711;</a>
+            <a href="HOMEPAGE.html#title_promo1" >BUS TICKETS &#711;</a>
+            <a href="check_booking.html">CHECK BOOKING &#711;</a>
+        </nav>
+    </header>
+    
+    <div class="container-background">
+        <div class="container">
+            <div class="confirmation-form">
+                <h2>Check Your Booking</h2>
+                <form id="check-booking-form">
+                    <input type="text" id="full-name" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="tel" id="phone-number" placeholder="Phone Number" required>
+                    <button type="submit" class="button_confirm">Check Booking</button>
+                </form>
+            </div>
+            <br><br>
+            <div id="booking-details" class="booking-details"></div><br>
+        </div><br>
+    </div><br>
+    <footer>
+        <p>&copy; 2024 by Safini Rasol | Privacy Policy | All Rights Reserved</p>
+        <div class="social_icons">
+            <a href="https://facebook.com"><img src="picture/facebook.png" alt="Facebook"></a>
+            <a href="https://tiktok.com"><img src="picture/tiktok.png" alt="TikTok"></a>
+            <a href="https://x.com"><img src="picture/x.png" alt="X"></a>
+            <a href="https://instagram.com"><img src="picture/insta.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEL AND TER</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia:wdth,wght@113.4,100..700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background-color: #EEEBDD;
+    }
+    header,footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: #561C24;
+        color: #fbf6f7;
+        margin: 0;
+        padding: 0;
+        position: sticky;
+    }
+    h1,footer p {
+        margin: 0;
+        padding: 15px;
+    }
+    h1 {
+        font-family: "Kalnia", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 113.4;
+    }
+    nav {
+        display: flex;
+        margin-left: auto;
+    }
+    .button_header a {
+        margin: 0;
+        padding: 15px;
+        font-size: 15px;
+        color: inherit;
+        text-decoration: none;
+        font-family: "Kalnia", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-variation-settings:
+            "wdth" 113.4;
+    }
+    .button_header a:hover{
+        color: #fff7ec;
+        font-size: larger;
+        font-weight: bold;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+        .social_icons {
+            display: flex;
+            margin: 0;
+            padding: 15px;
+            margin-left: auto;
+            gap:10px
+        }
+        .social_icons a img {
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+        }
+        .mini_header {
+            padding: 15px;
+            font-size: x-large;
+            color:#7D0A0A;
+        }
+        #mini_title {
+            font-size: large;
+        }
+        #title_header{
+            text-transform: uppercase;
+        }
+        .departure {
+            border: 4px solid #321d13;
+            padding: 10px;
+            margin: 15px;
+            width: fit-content;
+            background-color: #820300;
+            color:white;
+            text-transform: uppercase;
+        }
+        .list_bus {
+            padding: 15px;
+            margin: 15px;
+        }
+        .row-container, .header-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .header-row {
+            background-color: #561C24;
+            color: #fbf6f7;
+            padding: 10px;
+        }
+        .row-container {
+            background-color: #F5F5F5;
+            padding: 10px;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+        .row-container:hover {
+            background-color: #c7c6ac;
+        }
+        .select-button {
+            padding: 10px 20px;
+            text-decoration: none;
+            text-align: center;
+            background-color: #7d7858;
+            color: azure;
+            border: 1px solid #cebea8;
+            cursor: pointer;
+        }
+        .select-button:hover {
+            background-color: #5a5440;
+        }
+        .coach {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo {
+            width: 70px;
+            height: 45px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookingData = JSON.parse(localStorage.getItem('bookingData'));
+
+            if (bookingData) {
+                // Set FROM and TO destinations in the mini header
+                document.getElementById('mini_from_destination').textContent = bookingData.fromDestination;
+                document.getElementById('mini_to_destination').textContent = bookingData.toDestination;
+
+                // Set FROM and TO destinations in the departure section
+                document.getElementById('departure_from_destination').textContent = bookingData.fromDestination;
+                document.getElementById('departure_to_destination').textContent = bookingData.toDestination;
+
+                // Set departure date
+                document.getElementById('departure_date').textContent = bookingData.departureDate;
+                
+                // Set return date or N/A if not available
+                document.getElementById('return_date').textContent = bookingData.returnDate || 'N/A';
+            } else {
+                alert('No booking data found.');
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>LA BRISA BUS</h1>
+        <nav class="button_header">
+            <a href="HOMEPAGE.html">HOME &#711;</a>
+            <a href="HOMEPAGE.html#title_promo1" >BUS TICKETS &#711;</a>
+            <a href="check_booking.html">CHECK BOOKING &#711;</a>
+        </nav>
+    </header>
+    <div class="mini_header">
+        <b><p id="title_header">FROM <span id="mini_from_destination"></span> TO <span id="mini_to_destination"> BUS TICKETS</span></p></b> <!--will change based on user input-->
+        <p id="mini_title">Estimated trip duration: 7 h 30 min</p>
+    </div>
+    <div class="departure">
+        <p>DEPART <span id="departure_from_destination"></span> &#8594; <span id="departure_to_destination"></span></p> <!--will change vased on user input-->
+        <p id="departure_date"></p>
+    </div>
+    
+    <div class="list_bus">
+        <div class="header-row">
+            <div>COACH COMPANY</div>
+            <div>DEPARTURE TIME</div>
+            <div>DURATION</div>
+            <div>SEATS</div>
+            <div>FARE</div>
+            <div>RATING</div>
+            <div>VIEW TICKETS</div>
+        </div>
+        <div class="row-container">
+            <div class="coach"><img src="picture/mayang_sari.jpg" class="logo" alt=""> MAYANG SARI</div>
+            <div>9:40 am</div>
+            <div>7h 25min</div>
+            <div>30 seats (2+1)</div>
+            <div>RM55</div>
+            <div>4.4/5</div>
+            <a href="mayangsari.html" class="select-button">SELECT</a>
+        </div>
+        <div class="row-container">
+            <div class="coach"><img src="picture/plus.png" class="logo" alt=""> PLUSLINER</div>
+            <div>10:40 am</div>
+            <div>7h 25min</div>
+            <div>31 seats (2+1 , 4)</div>
+            <div>RM54</div>
+            <div>4.1/5</div>
+            <a href="plus.html" class="select-button">SELECT</a>
+        </div>
+        <div class="row-container">
+            <div class="coach"><img src="picture/mara.png" class="logo" alt=""> MARALINER </div>
+            <div>11:40 am</div>
+            <div>7h 30min</div>
+            <div>42 seats (2+2)</div>
+            <div>RM53</div>
+            <div>4.0/5</div>
+            <a href="mara.html" class="select-button">SELECT</a>
+        </div>
+        <div class="row-container">
+            <div class="coach"><img src="picture/cepat.png" class="logo" alt=""> CEPAT EKSPRESS</div>
+            <div>12:40 pm</div>
+            <div>7h 10min</div>
+            <div>30 seats (2+1)</div>
+            <div>RM5543</div>
+            <div>4.7/5</div>
+            <a href="cepat.html" class="select-button">SELECT</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 by Safini Rasol | Privacy Policy | All Rights Reserved</p>
+        <div class="social_icons">
+            <a href="https://facebook.com"><img src="picture/facebook.png" alt="Facebook"></a>
+            <a href="https://tiktok.com"><img src="picture/tiktok.png" alt="TikTok"></a>
+            <a href="https://x.com"><img src="picture/x.png" alt="X"></a>
+            <a href="https://instagram.com"><img src="picture/insta.png" alt="Instagram"></a>
+        </div>
+    </footer>
+</body>
+</html>

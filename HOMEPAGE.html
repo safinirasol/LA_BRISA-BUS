@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HOMEPAGE</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kalnia:wdth,wght@113.4,100..700&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        body {
+            margin: 0;
+            background-color: #EEEBDD;
+        }
+        header,footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background-color: #561C24;
+            color: #fbf6f7;
+            margin: 0;
+            padding: 0;
+            position: sticky;
+        }
+        h1,footer p {
+            margin: 0;
+            padding: 15px;
+        }
+        h1 {
+            font-family: "Kalnia", serif;
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 113.4;
+        }
+        nav {
+            display: flex;
+            margin-left: auto;
+        }
+        .button_header a {
+            margin: 0;
+            padding: 15px;
+            font-size: 15px;
+            color: inherit;
+            text-decoration: none;
+            font-family: "Kalnia", serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 113.4;
+        }
+        .button_header a:hover{
+            color: #fff7ec;
+            font-size: larger;
+            font-weight: bold;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .social_icons {
+            display: flex;
+            margin: 0;
+            padding: 15px;
+            margin-left: auto;
+            gap:10px
+        }
+        .social_icons a img {
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            background-image: url('picture/bg_container.png');
+            background-size: 100% 100%;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            justify-content: center;
+        } 
+
+        .booking-form {
+            width: 500px;
+            height:400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            color: #7D0A0A;
+        }
+
+        .booking-form h2 {
+            text-align: center;
+            color: #7D0A0A;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        form label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form input, form select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #561C24;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #62363c;
+        }
+        #title_promo1,#title_promo2{
+            text-align: center;
+            color: #7D0A0A;
+            font-size: 45px;
+            margin: 20px 0;
+            font-family: "Kalnia", serif;
+            font-optical-sizing: auto;
+            font-weight: 700;
+            font-style: normal;
+            font-variation-settings:
+                "wdth" 102;
+        }
+        .price {
+            font-size: 55px;
+            font-weight: bold;
+            color: #ffcd77; 
+        }
+
+        .place_promo {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 40px 0;
+        }
+
+        .book-now {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .book-now:hover {
+            background-color: #ffffff;
+            color: #1E90FF;
+        }
+
+        .promo-banner {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .promo-content {
+            width: 30%;
+            margin: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #820300;
+            color: #e8e6e4;
+            text-align: center;
+        }
+
+        .promo-content img {
+            width: 100%;
+            height: 40%;
+            transition: transform 0.3s;
+        }
+
+        .promo-content img:hover {
+            transform: scale(1.05);
+        }
+
+        .rate {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ffcd77;
+        }
+
+        .bus_promo {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .bus-banner {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .bus-content {
+            width: 25%;
+            margin: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px 8px 8px 8px;
+            background-color: #820300;
+            color: #e8e6e4;
+            text-align: center;
+            overflow: hidden; /* Reintroducing overflow hidden to prevent image overflow issues */
+        }
+
+        .bus-content img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .bus-content img:hover {
+            transform: scale(1.20);
+        }
+
+        #menu {
+            font-size: 25px;
+            cursor: pointer;
+            color: #ffffff;
+            margin-top: 10px;
+            display: block;
+            background-color: #820300;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        #menu:hover {
+            background-color: #813131;
+        }
+
+    </style>
+    <script>
+
+        //save data and go to from and to location ticket page
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('busBookingForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const fromDestination = document.getElementById('from-destination').value;
+            const toDestination = document.getElementById('to-destination').value;
+            const departureDate = document.getElementById('departure-date').value;
+
+            // Store booking data in localStorage
+            const bookingData = {
+                fromDestination,
+                toDestination,
+                departureDate,
+            };
+            localStorage.setItem('bookingData', JSON.stringify(bookingData));
+
+            // Determine the URL based on fromDestination and toDestination
+            let url = '';
+
+            if (fromDestination === 'Kuala Lumpur' && toDestination === 'Melaka') {
+                url = 'kl_mel.html';
+            } else if (fromDestination === 'Kuala Lumpur' && toDestination === 'Cameron Highlands') {
+                url = 'kl_ch.html';
+            } else if (fromDestination === 'Kuala Lumpur' && toDestination === 'Terengganu') {
+                url = 'kl_ter.html';
+            } else if (fromDestination === 'Melaka' && toDestination === 'Terengganu') {
+                url = 'mel_ter.html';
+            } else if (fromDestination === 'Melaka' && toDestination === 'Cameron Highlands') {
+                url = 'mel_ch.html';
+            } else if (fromDestination === 'Terengganu' && toDestination === 'Kuala Lumpur') {
+                url = 'kl_ter.html';
+            } else if (fromDestination === 'Terengganu' && toDestination === 'Cameron Highlands') {
+                url = 'ter_ch.html';
+            } else if (fromDestination === 'Terengganu' && toDestination === 'Melaka') {
+                url = 'mel_ter.html';
+            } else {
+                url = 'result.html'; // Default URL if no specific route matched
+            }
+
+            // Redirect to the determined URL
+            window.location.href = url;
+            });
+        });
+        function redirectToBooking(fromDestination, toDestination) {
+            // Populate the booking form fields
+            document.getElementById('from-destination').value = fromDestination;
+            document.getElementById('to-destination').value = toDestination;
+
+            // Scroll to the booking form
+            document.getElementById('busBookingForm').scrollIntoView({ behavior: 'smooth' });
+        }
+        function new_img(imgId, newSrc) {
+            var img = document.getElementById(imgId);
+            img.setAttribute("src", newSrc);
+        }
+
+        function old_img(imgId, oldSrc) {
+            var img = document.getElementById(imgId);
+            img.setAttribute("src", oldSrc);
+        }
+    </script>
+    <body>
+        <header>
+            <h1>LA BRISA BUS</h1>
+            <nav class="button_header">
+                <a href="HOMEPAGE.html">HOME &#711;</a>
+                <a href="HOMEPAGE.html#title_promo1" >BUS TICKETS &#711;</a>
+                <a href="check_booking.html">CHECK BOOKING &#711;</a>
+            </nav>
+        </header>
+        <div class="container">
+            <main class="main-content">
+                <div class="booking-form">
+                    <form id="busBookingForm" action="result.html" method="GET">
+                        <h2>BOOK MALAYSIA BUS TICKETS ONLINE</h2><br>
+                        <label>From Destination</label>
+                        <select name="from-destination" id="from-destination" required>
+                            <option value="">Select Destination</option>
+                            <option value="Kuala Lumpur">Kuala Lumpur</option>
+                            <option value="Melaka">Melaka</option>
+                            <option value="Terengganu">Terengganu</option>
+                        </select>
+                        <label>To Destination</label>
+                        <select name="to-destination" id="to-destination" required>
+                            <option value="">Select Destination</option>
+                            <option value="Melaka">Melaka</option>
+                            <option value="Cameron Highlands">Cameron Highlands</option>
+                            <option value="Terengganu">Terengganu</option>
+                        </select>
+                        <label>Departure Date</label>
+                        <input type="date" id="departure-date" name="departure-date" required> <br><br>
+                        <button type="submit">SEARCH BUSES</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+        <div>
+            <h2 id="title_promo1">CHOOSE HOT-SELLING BUS TRIP</h2>
+        </div>
+        <div class="promo-banner">
+            <div class="promo-content">
+                <img src="picture/terengganu.jpg" id="img1" alt="Terengganu" onmouseover="new_img('img1', 'picture/terengganu2.jpg')" onmouseleave="old_img('img1', 'picture/terengganu.jpg')">
+                <p class="place_promo">Kuala Lumpur to Terengganu</p>
+                <p>PRICE FROM</p>
+                <p class="price">RM 41</p>
+                <button class="book-now" onclick="redirectToBooking('Kuala Lumpur', 'Terengganu')">BOOK NOW</button>
+            </div>
+            <div class="promo-content">
+                <img src="picture/cameron1.jpg" id="img2" alt="Cameron Highlands" onmouseover="new_img('img2', 'picture/cameron2.jpg')" onmouseleave="old_img('img2', 'picture/cameron1.jpg')">
+                <p class="place_promo">Melaka to Cameron Highlands</p>
+                <p>PRICE FROM</p>
+                <p class="price">RM 54</p>
+                <button class="book-now" onclick="redirectToBooking('Melaka', 'Cameron Highlands')">BOOK NOW</button>
+            </div>
+            <div class="promo-content">
+                <img src="picture/melaka1.jpg" id="img3" alt="Melaka" onmouseover="new_img('img3', 'picture/melaka2.jpg')" onmouseleave="old_img('img3', 'picture/melaka1.jpg')">
+                <p class="place_promo">Kuala Lumpur to Melaka</p>
+                <p>PRICE FROM</p>
+                <p class="price">RM 12</p>
+                <button class="book-now" onclick="redirectToBooking('Kuala Lumpur', 'Melaka')">BOOK NOW</button>
+            </div>
+        </div>
+
+        <div>
+            <h2 id="title_promo2">OUR PROFESSIONAL BUS OPERATORS</h2>
+        </div>
+        <div class="bus-banner">
+            <div class="bus-content">
+                <img src="picture/mayang.png" alt="Mayang">
+                <p class="bus_promo">MAYANG SARI</p>
+                <p>established in 1993</p>
+                <p class="rate">4.4/5</p>
+                <a id="menu" href="catalogue_ms.html">READ MORE</a>
+            </div>
+            <div class="bus-content">
+                <img src="picture/plusliner.png" alt="Plus">
+                <p class="bus_promo">PLUSLINER</p>
+                <p>established in 2007</p>
+                <p class="rate">4.1/5</p>
+                <a id="menu" href="catalogue_plus.html">READ MORE</a>
+            </div>
+            <div class="bus-content">
+                <img src="picture/maraliner.png" alt="Maraliner">
+                <p class="bus_promo">MARALINER</p>
+                <p>established in 1985</p>
+                <p class="rate">4.0/5</p>
+                <a id="menu" href="catalogue_mr.html">READ MORE</a>
+            </div>
+            <div class="bus-content">
+                <img src="picture/cepat1.png" alt="Cepat">
+                <p class="bus_promo">CEPAT EKSPRESS</p>
+                <p>established in 1980</p>
+                <p class="rate">4.7/5</p>
+                <a id="menu" href="catalogue_ct.html">READ MORE</a>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; 2024 by Safini Rasol | Privacy Policy | All Rights Reserved</p>
+            <div class="social_icons">
+                <a href="https://facebook.com"><img src="picture/facebook.png" alt="Facebook"></a>
+                <a href="https://tiktok.com"><img src="picture/tiktok.png" alt="TikTok"></a>
+                <a href="https://x.com"><img src="picture/x.png" alt="X"></a>
+                <a href="https://instagram.com"><img src="picture/insta.png" alt="Instagram"></a>
+            </div>
+        </footer>
+    </body>
+    </html>
