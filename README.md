@@ -1,6 +1,6 @@
 # LA BRISA BUS
 
-This repository contains the first final project completed during Semester Two in 2024. It is a basic website project built as my first website.
+This repository contains the first final project completed during Semester Three in 2024. It is a basic website project built as my first website.
 
 ## Project Overview
 
